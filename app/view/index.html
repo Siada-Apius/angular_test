@@ -1,0 +1,191 @@
+<div class="row">
+    <div class="col-md-12">
+        <p><i class="fa fa-exclamation-triangle"></i>
+            Please complete the form below based on available information. Click on applicable tabs above to enter additional information related to the incident.
+            <br>
+            When complete click 'REVIEW and SUBMIT' tab above.
+        </p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <form class="form-horizontal index_form" role="form">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="date_and_time">
+                    <span>* </span>Date and Time of Incident:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': date_and_time, 'has-error': ! date_and_time}">
+                    <input required ng-change="inputChange(date_and_time)" ng-model="date_and_time" type="text" class="form-control" id="date_and_time" placeholder="5/13/2013 3:40 PM">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="reported">
+                    <span>* </span>Reported by:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': reported, 'has-error': ! reported}">
+                    <input required ng-change="inputChange(reported)" ng-model="reported" type="text" class="form-control" id="reported" placeholder="John Doe">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6">
+                    <span>* </span>Company of Reporter:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': company_of_reporter, 'has-error': ! company_of_reporter}">
+                    <select class="form-control" ng-change="inputChange(company_of_reporter)" ng-model="company_of_reporter">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="contact_number">
+                    <span>* </span>Contact Number:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': contact_number, 'has-error': ! contact_number}">
+                    <input ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im" ng-change="inputChange(contact_number)" ng-model="contact_number" type="text" class="form-control" id="contact_number" placeholder="405.234.9451">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="supervisor">
+                    Supervisor Name:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': supervisor, '': ! supervisor}">
+                    <input ng-change="inputChange(supervisor)" ng-model="supervisor" type="text" class="form-control" id="supervisor" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="description">
+                    <span>* </span>High Level Description of Incident:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': description, 'has-error': ! description}">
+                    <textarea ng-change="inputChange(description)" ng-model="description" class="form-control" id="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-xs-offset-5 text-center">Well Information:</label>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6">
+                    <span>* </span>Well Number:
+                </label>
+                <div class="col-sm-6" ng-class="{'has-success': well, 'has-error': ! well}">
+
+                    <select class="form-control" ng-model="well" ng-change="inputChange(well)">
+                        <option value="1">Well-01</option>
+                        <option value="2">Well-02</option>
+                        <option value="3">Well-03</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="region">
+                    Region:
+                </label>
+                <div class="col-sm-6">
+                    <input ng-model="region" type="text" class="form-control" id="region" placeholder="South" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="state">
+                    State:
+                </label>
+                <div class="col-sm-6">
+                    <input ng-model="state" type="text" class="form-control" id="state" placeholder="Oklahoma" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="office">
+                    Field Office:
+                </label>
+                <div class="col-sm-6">
+                    <input ng-model="office" type="text" class="form-control" id="office" placeholder="Ringwood" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6">
+                    <span>* </span>Incident Severity (Check all that Apply):
+                </label>
+                <div class="col-sm-6" ng-class="{'': severity, 'has-error': ! severity}">
+                    <ul class="list-unstyled well">
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val1" type="checkbox" value="Loss of well control">
+                                    Loss of well control
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val2" type="checkbox" value="Fatality(ies)">
+                                    Fatality(ies)
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val3" type="checkbox" value="Hospitalization or medical treatment">
+                                    Hospitalization or medical treatment
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val4" type="checkbox" value="Spill offsize > 50 Bbls">
+                                    Spill offsize > 50 Bbls
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val5" type="checkbox" value="Spill to water, any amount">
+                                    Spill to water, any amount
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val6" type="checkbox" value="Property damage">
+                                    Property damage
+                                </label>
+                            </div>
+                        </li>
+                        <li><hr></li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-change="inputChange(severity)" ng-model="severity.val7" type="checkbox" value="None Apply">
+                                    None Apply
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="helloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular JS</title>
+    <script src="lib/angular.js"></script>
+    <script>
+        //model
+        var model = "Hello World";
+
+        var helloWorldApp = angular.module('helloWorldApp', []);
+
+        //controller
+        helloWorldApp.controller("HelloWorldCtrl", function ($scope) {
+            $scope.message = model;
+
+            //behavior
+            $scope.clickHandler = function () {
+                $scope.message = $scope.texts;
+            }
+        });
+    </script>
+</head>
+<body ng-controller="HelloWorldCtrl">
+    <h1>{{message}}</h1>
+
+    <!--<input type="text" ng-model="super_name">-->
+    <!--<h1>Hello {{super_name}}</h1>-->
+
+    <input ng-model="texts" />
+    <button ng-click="clickHandler()">Submit</button>
+</body>
+</html>
